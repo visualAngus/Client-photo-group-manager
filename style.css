@@ -50,6 +50,7 @@ body{
 }
 #obligatoire{
     color: #4493f8;
+    font-size: clamp(1rem,2rem + 0.5vw,10rem);
 }
 .info_profil{
     font-size: clamp(1rem,2rem + 0.5vw,10rem);
@@ -61,18 +62,51 @@ body{
     width: 100%;
     z-index: 3;
 }
-
+.barre{
+    width: 100%;
+    height: clamp(1px,0.5px + 0.3vw,10rem);
+    background-color: #30363d;
+    margin-top: clamp(1rem,1rem + 2vw,20rem);
+}
+.info_titre{
+    font-size: clamp(1rem,2rem + 1vw,10rem);
+    color: #e6edf3;
+    text-align: center;
+    padding-top: clamp(1rem,2.5rem + 1vw,10rem);
+    height: clamp(5rem,5rem + 3vw,20rem);
+    width: 100%;
+    left: 0;
+    font-weight: bold;
+    background-color:#161b22 ;
+    border-bottom: clamp(1px,0.5px + 0.3vw,10rem) solid #30363d;
+    border-top: clamp(1px,0.5px + 0.3vw,10rem) solid #30363d;
+}
 .infos{
-    background-color: #4493f8;
     width: 100%;
     height: 50vh;
     margin-top: clamp(1rem,1rem + 5vw,20rem);
+    border-left: clamp(1px,0.5px + 0.3vw,10rem) solid #30363d;
+    border-right: clamp(1px,0.5px + 0.3vw,10rem) solid #30363d;
 }
 .titre_info{
-    font-size: clamp(1rem,2rem + 0.5vw,10rem);
+    margin-left: clamp(1rem,0.5rem + 1vw,20rem);
+    font-size: clamp(1rem,2rem + 1vw,10rem);
     color: #e6edf3;
     text-align: center;
-    background-color: #4493f8;
     height: clamp(5rem,5rem + 6vw,20rem);
-    width: 100%;
+    font-weight: bold;
+}
+
+.input_info{
+    width: clamp(1rem,20rem + 8vw,50rem);
+    height: clamp(1rem,3rem + 1vw,10rem);
+    margin-left: clamp(1rem,1rem + 3vw,20rem);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: clamp(1px,0.5px + 0.3vw,10rem) solid #30363d;
+    background-color: #292e36;
+    color: #e6edf3;
+    font-size: large;
+    touch-action: none;
+    font-size: clamp(1rem,2rem + 1vw,10rem);
 }
