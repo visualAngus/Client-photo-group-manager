@@ -53,7 +53,7 @@ body{
     font-size: clamp(1rem,2rem + 0.5vw,10rem);
 }
 .info_profil{
-    font-size: clamp(1rem,2rem + 0.5vw,10rem);
+    font-size: clamp(1rem,2rem + 1vw,10rem);
     margin-top: clamp(1rem,5rem + 5vw,20rem);
     color: #e6edf3;
     text-align: center;
@@ -130,4 +130,8 @@ body{
     cursor: pointer;
     transition: background-color 0.3s;
     margin-top: clamp(1rem,0.5rem + 8vw,20rem);
+}
+.insta_num{
+    font-size: clamp(1rem,1rem + 0.8vw,15rem);
+    color: #e6edf3;
 }

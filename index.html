@@ -24,12 +24,12 @@
         <div class="barre"></div>
 
         <label class="titre_info" for="contact">contact : </label>
+        <a class="insta_num">(remplissez au moins une des deux cases suivantes)</a>
         <a id="obligatoire">*</a>
         <div class="espace"></div>
 
-        <label class="titre_info" for="insta">1- Instagram / mail : </label>
+        <label class="titre_info" for="insta">1- Instagram : </label>
         <input class="input_info" type="text" id="insta" name="insta" required>
-        <a id="obligatoire">*</a>
         <div class="espace"></div>
         <label class="titre_info" for="tel">2- Téléphone : </label>
         <input class="input_info" type="tel" id="tel" name="tel" required>
@@ -38,44 +38,56 @@
     <div class="final">
         <button class="bouton" type="submit">Créer mon groupe</button>
     </div>
-  <script>
-    const fileInput = document.getElementById('myFileInput');
-    const previewImage = document.getElementById('previewImage');
-
-    function openFileDialog() {
-      fileInput.click();
-    }
-
-    fileInput.addEventListener('change', function() {
-      const file = this.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          previewImage.src = e.target.result;
-        }
-        reader.readAsDataURL(file);
-      } else {
-        previewImage.src = "profil vide.jpg";
+    <script>
+      const fileInput = document.getElementById('myFileInput');
+      const previewImage = document.getElementById('previewImage');
+  
+      function openFileDialog() {
+          fileInput.click();
       }
-    });
-    document.querySelector('.bouton').addEventListener('click', function() {
-      // Retrieve the entered data
-      const nom = document.getElementById('nom').value;
-      const insta = document.getElementById('insta').value;
-      const tel = document.getElementById('tel').value;
-      if (nom === '') {
-        alert('Veuillez remplir le champ "Nom".');
-      } else if (insta === '' && tel === '') {
-        alert('Veuillez remplir au moins le champ "Instagram / mail" ou le champ "Téléphone".');
-        document.getElementById('nom').value = nom;
-        document.getElementById('insta').focus();
-
-      } else {
-        window.open("nb_groupe.html");
-
-      }
-    });
-
+  
+      fileInput.addEventListener('change', function () {
+          const file = this.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                  previewImage.src = e.target.result;
+              }
+              reader.readAsDataURL(file);
+          } else {
+              previewImage.src = "profil vide.jpg";
+          }
+      });
+  
+      document.querySelector('.bouton').addEventListener('click', function () {
+          // Retrieve the entered data
+          const nom = document.getElementById('nom').value;
+          const insta = document.getElementById('insta').value;
+          const tel = document.getElementById('tel').value;
+          if (nom === '') {
+              alert('Veuillez remplir le champ "Nom".');
+          } else if (insta === '' && tel === '') {
+              alert('Veuillez remplir au moins le champ "Instagram" ou le champ "Téléphone".');
+              document.getElementById('nom').value = nom;
+              document.getElementById('insta').focus();
+          } else if (tel !== '' && !/^(\+\d{1,3}\s?)?(\(\d{1,3}\)\s?)?\d{1,4}(\s?\d{1,4}){1,3}$/.test(tel)) {
+              alert('Le format du numéro de téléphone est incorrect.');
+              document.getElementById('tel').focus();
+          } else if (nom.length <= 2) {
+              alert('Le nom du groupe doit contenir plus de 2 caractères.');
+          } else {
+              // Télécharger la photo importée par l'utilisateur
+              const imageSrc = previewImage.src;
+              const link = document.createElement('a');
+              link.href = imageSrc;
+              link.download = 'photo_profil.jpg';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              window.open("nb_groupe.html");
+          }
+      });
   </script>
+  
 </body>
 </html>
