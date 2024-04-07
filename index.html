@@ -28,7 +28,7 @@
         <div class="espace"></div>
 
         <label class="titre_info" for="insta">1- Instagram / mail : </label>
-        <input class="input_info" type="text" id="nom" name="insta" required>
+        <input class="input_info" type="text" id="insta" name="insta" required>
         <a id="obligatoire">*</a>
         <div class="espace"></div>
         <label class="titre_info" for="tel">2- Téléphone : </label>
@@ -58,6 +58,24 @@
         previewImage.src = "profil vide.jpg";
       }
     });
+    document.querySelector('.bouton').addEventListener('click', function() {
+      // Retrieve the entered data
+      const nom = document.getElementById('nom').value;
+      const insta = document.getElementById('insta').value;
+      const tel = document.getElementById('tel').value;
+      if (nom === '') {
+        alert('Veuillez remplir le champ "Nom".');
+      } else if (insta === '' && tel === '') {
+        alert('Veuillez remplir au moins le champ "Instagram / mail" ou le champ "Téléphone".');
+        document.getElementById('nom').value = nom;
+        document.getElementById('insta').focus();
+
+      } else {
+        window.open("nb_groupe.html");
+
+      }
+    });
+
   </script>
 </body>
 </html>
