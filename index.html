@@ -7,8 +7,7 @@
 <body>
     <div class="titre"> Bal 2023-2024 </div>
     <div class="info_profil">
-        <a>Cliquez sur l'image pour changer la photo de profil</a>
-        <a id="obligatoire">*</a>
+        <a>Cliquez sur l'image pour changer la photo de profil.</a>
     </div>
     <div class="photo">
         <a href="#" onclick="openFileDialog()">
@@ -18,10 +17,26 @@
       </div>
     <div class="infos">
         <h2 class="info_titre">Informations sur le groupe</h2>
+
         <label class="titre_info" for="nom">Nom / nom du groupe : </label>
         <input class="input_info" type="text" id="nom" name="nom" required>
         <a id="obligatoire">*</a>
         <div class="barre"></div>
+
+        <label class="titre_info" for="contact">contact : </label>
+        <a id="obligatoire">*</a>
+        <div class="espace"></div>
+
+        <label class="titre_info" for="insta">1- Instagram / mail : </label>
+        <input class="input_info" type="text" id="nom" name="insta" required>
+        <a id="obligatoire">*</a>
+        <div class="espace"></div>
+        <label class="titre_info" for="tel">2- Téléphone : </label>
+        <input class="input_info" type="tel" id="tel" name="tel" required>
+        <div class="barre"></div>
+    </div>
+    <div class="final">
+        <button class="bouton" type="submit">Créer mon groupe</button>
     </div>
   <script>
     const fileInput = document.getElementById('myFileInput');
