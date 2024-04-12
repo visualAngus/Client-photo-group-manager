@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajouter au fichier JSON</title>
+    <script>
+        function ajouterAuFichierJSON(id, nom, pseudo, telephone) {
+            fetch('https://gael.pupin.fr/bal/data.json', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Fichier JSON mis à jour avec succès');
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Ajouter au fichier JSON</h1>
+    <button onclick="ajouterAuFichierJSON(1, 'John Doe', 'john_doe', '123456789')">Ajouter</button>
+</body>
+</html>

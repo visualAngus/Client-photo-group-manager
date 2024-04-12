@@ -1,31 +1,40 @@
-// Fonction pour écrire des données JSON dans un fichier
-function ecrireDansFichierJSON(url, nouvellesDonnees, callback) {
-    fetch(url, {
-        method: 'PUT', // Utiliser la méthode PUT pour écrire des données
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(nouvellesDonnees)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Données écrites avec succès dans le fichier JSON :", data);
-        if (callback) {
-            callback(data);
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajouter au fichier JSON</title>
+    <script>
+        function ajouterAuFichierJSON(numero, nom, insta, tel) {
+            const data = {
+                numero: numero,
+                nom: nom,
+                insta: insta,
+                tel: tel
+            };
+
+            const jsonData = JSON.stringify(data);
+
+            // Utilisez l'API Fetch pour envoyer une requête POST au serveur
+            fetch('/ajouter?numero=' + numero + '&nom=' + nom + '&insta=' + insta + '&tel=' + tel, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: jsonData
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                alert('Données ajoutées au fichier JSON avec succès.');
+            })
+            .catch(error => {
+                console.error(error);
+                alert('Une erreur s\'est produite lors de l\'ajout des données au fichier JSON.');
+            });
         }
-    })
-    .catch(error => console.error("Erreur lors de l'écriture dans le fichier JSON :", error));
-}
-
-// Chemin vers le fichier de base de données JSON
-const cheminBaseDeDonnees = 'data.json';
-
-// Données à écrire dans le fichier JSON
-const nouvellesDonnees = {
-    "nouvelleCle": "nouvelleValeur"
-};
-
-// Appeler la fonction pour écrire dans le fichier JSON
-ecrireDansFichierJSON(cheminBaseDeDonnees, nouvellesDonnees, function() {
-    console.log("Écriture réussie !");
-});
+    </script>
+</head>
+<body>
+    <h1>Ajouter au fichier JSON</h1>
+    <button onclick="ajouterAuFichierJSON(1, 'John Doe', 'john_doe', '123456789')">Ajouter</button>
+</body>
+</html>

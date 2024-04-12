@@ -1,16 +1,20 @@
 import requests
 
-def telecharger_image(url, nom_fichier):
-    # Télécharge l'image depuis l'URL
-    reponse = requests.get(url)
-    if reponse.status_code == 200:
-        # Écriture de l'image dans un fichier
-        with open(nom_fichier, 'wb') as f:
-            f.write(reponse.content)
-        print("L'image a été téléchargée avec succès.")
-    else:
-        print("Impossible de télécharger l'image.")
+def ajouter_element(url, nouvel_element):
+    try:
+        # Effectuer une requête POST avec les données JSON à ajouter
+        response = requests.post(url, json=nouvel_element)
+        
+        # Vérifier si la requête a été traitée avec succès
+        if response.status_code == 200:
+            print("Élément ajouté avec succès.")
+        else:
+            print(f"Erreur lors de l'ajout de l'élément. Code d'erreur : {response.status_code}")
+    except Exception as e:
+        print(f"Une erreur s'est produite : {str(e)}")
 
+# Exemple d'utilisation
+url_serveur = "https://gael.pupin.fr/bal/data.json"
+nouvel_element = {"nom": "John", "age": 30}
 
-# Appel de la fonction pour télécharger l'image
-telecharger_image('http://127.0.0.1:5500/test.png', "image_telechargee.jpg")
+ajouter_element(url_serveur, nouvel_element)
